@@ -5,6 +5,7 @@ from scipy import stats
 from datetime import datetime
 from statsmodels.regression.rolling import RollingOLS
 import wrds
+import os
 
 # https://wrds-www.wharton.upenn.edu/data-dictionary/factsamp_all/wrds_fund_qf_int/
 
@@ -24,8 +25,9 @@ def df_to_panel(df, group_col, variable_name):
             group, left_index=True, right_index=True, how="left")
     return panel
 
+ROOTPATH = os.getcwd()
 PATH = "../data/raw_1203.xlsx"
-raw = pd.read_excel(PATH)
+raw = pd.read_excel(ROOTPATH+"/data/raw_1203.xlsx")
 
 
 #%% Calculate Free Cash Flow.
